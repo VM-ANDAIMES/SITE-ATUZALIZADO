@@ -1,0 +1,21 @@
+{
+  "title": "Vm Andaimes",
+  "description": "Estruturas metálicas de alta resistência, certificadas e prontas para garantir a máxima produtividade e segurança no trabalho em altura.",
+  "icons": {
+    "icon": "/.figma/make/favicon.png"
+  },
+  "openGraph": {
+    "image": "/.figma/make/social-image.png"
+  },
+  "analytics": {
+    "googleAnalyticsId": "G-L3SBZ1ZBX3"
+  },
+  "customScripts": {
+    "headStart": "<script type=\"application/ld+json\">\n{\n  \"@context\": \"https://schema.org\",\n  \"@type\": \"WebSite\",\n  \"name\": \"VM Andaimes\",\n  \"url\": \"https://vmandaimes.com.br\"\n}\n</script>\n",
+    "headEnd": "<meta name=\"vm Andaimes\" content=\"5NSimsxBRqOjQRvtF40PaOCO3Q6DO0stW8Y8t1w8agI\" />\n"
+  },
+  "accessibility": {
+    "addBypassLinks": false,
+    "ignoreReducedMotion": false
+  }
+}
