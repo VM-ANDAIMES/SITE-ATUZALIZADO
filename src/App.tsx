@@ -1,17 +1,19 @@
 import { useState, useEffect, useRef, createContext, useContext, type FC } from 'react'
-import logoVm from '../imports/logo_vm-1.png'
-import galleryPhoto1 from './imports/WhatsApp_Image_2026-07-30_at_18.17.30__1_-1.jpeg'
-import galleryPhoto2 from '@/imports/WhatsApp_Image_2026-07-30_at_18.17.30-1.jpeg'
-import galleryPhoto3 from '@/imports/WhatsApp_Image_2026-07-30_at_18.17.29__1_.jpeg'
-import galleryPhoto4 from '@/imports/WhatsApp_Image_2026-07-30_at_18.17.29.jpeg'
-import galleryPhoto5 from '@/imports/WhatsApp_Image_2026-07-31_at_12.37.16.jpeg'
-import galleryPhoto6 from '@/imports/WhatsApp_Image_2026-07-31_at_12.37.16__3_.jpeg'
-import galleryPhoto7 from '@/imports/WhatsApp_Image_2026-07-31_at_12.37.17.jpeg'
-import galleryPhoto8 from '@/imports/WhatsApp_Image_2026-07-31_at_12.37.17__1_.jpeg'
-import galleryPhoto9 from './imports/ChatGPT_Image_31_de_jul._de_2026__13_16_10.png'
-import galleryPhoto10 from './imports/ChatGPT_Image_31_de_jul._de_2026__13_17_06.png'
 import { translations, type Lang } from './translations'
-import calCenterImg from '@/imports/cal_center.png'
+
+const logoVm = 'https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=1200&q=80'
+const calCenterImg = 'https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=800&q=80'
+
+const galleryPhoto1 = 'https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=1200&q=80'
+const galleryPhoto2 = 'https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=1200&q=80'
+const galleryPhoto3 = 'https://images.unsplash.com/photo-1489515217757-5fd1be406fef?auto=format&fit=crop&w=1200&q=80'
+const galleryPhoto4 = 'https://images.unsplash.com/photo-1517048676732-d65bc937f952?auto=format&fit=crop&w=1200&q=80'
+const galleryPhoto5 = 'https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=1200&q=80'
+const galleryPhoto6 = 'https://images.unsplash.com/photo-1494526585095-c41746248156?auto=format&fit=crop&w=1200&q=80'
+const galleryPhoto7 = 'https://images.unsplash.com/photo-1541888946425-d81bb19240f5?auto=format&fit=crop&w=1200&q=80'
+const galleryPhoto8 = 'https://images.unsplash.com/photo-1515141742587-c0b7a0f5960c?auto=format&fit=crop&w=1200&q=80'
+const galleryPhoto9 = 'https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=1200&q=80'
+const galleryPhoto10 = 'https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=1200&q=80'
 
 // ─── Language Context ────────────────────────────────────────────────────────
 
