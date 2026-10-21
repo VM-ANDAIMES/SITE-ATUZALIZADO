@@ -11,12 +11,13 @@ import galleryPhoto8 from '@/imports/WhatsApp_Image_2026-07-31_at_12.37.17__1_.j
 import galleryPhoto9 from '@/imports/ChatGPT_Image_31_de_jul._de_2026__13_16_10.png'
 import galleryPhoto10 from '@/imports/ChatGPT_Image_31_de_jul._de_2026__13_17_06.png'
 import { translations, type Lang } from './translations'
-import calCenterImg from '@/imports/cal_center.png'//
-//--Language Context
+import calCenterImg from '@/imports/cal_center.png';
+
+// Language Context 
 const LangContext = createContext<{ lang: Lang; setLang: (l: Lang) => void }>({ lang: 'pt', setLang: () => {} })
 const useLang = () => useContext(LangContext)
 
-// ─── Scroll Progress Bar ─────────────────────────────────────────────────────
+//  Scroll Progress Bar 
 function ScrollProgress() {
   const [progress, setProgress] = useState(0)
   useEffect(() => {
