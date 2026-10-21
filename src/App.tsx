@@ -11,8 +11,9 @@ import galleryPhoto8 from '@/imports/WhatsApp_Image_2026-07-31_at_12.37.17__1_.j
 import galleryPhoto9 from '@/imports/ChatGPT_Image_31_de_jul._de_2026__13_16_10.png'
 import galleryPhoto10 from '@/imports/ChatGPT_Image_31_de_jul._de_2026__13_17_06.png'
 import { translations, type Lang } from './translations'
-import calCenterImg from '@/imports/cal_center.png'//
-─── Language Context ────────────────────────────────────────────────────────
+import calCenterImg from '@/imports/cal_center.png'
+
+// ─── Language Context ────────────────────────────────────────────────────────
 
 const LangContext = createContext<{ lang: Lang; setLang: (l: Lang) => void }>({ lang: 'pt', setLang: () => {} })
 const useLang = () => useContext(LangContext)
@@ -1324,4 +1325,708 @@ function Contact() {
                   </div>
                   <div>
                     <label style={{ fontFamily: 'Inter, sans-serif', fontSize: '0.72rem', fontWeight: 600, color: 'rgba(255,255,255,0.45)', textTransform: 'uppercase', letterSpacing: '0.08em', display: 'block', marginBottom: 8 }}>{t.form.service}</label>
-                    <se
+                    <select style={{ ...inputStyle('service'), cursor: 'pointer' }}
+                      value={form.service}
+                      onFocus={() => setFocused('service')} onBlur={() => setFocused(null)}
+                      onChange={e => setForm(f => ({ ...f, service: e.target.value }))}>
+                      <option value="" style={{ background: '#1C1C1E' }}>{t.form.servicePh}</option>
+                      {tServices.items.map(s => <option key={s.title} value={s.title} style={{ background: '#1C1C1E' }}>{s.title}</option>)}
+                    </select>
+                  </div>
+                  <div>
+                    <label style={{ fontFamily: 'Inter, sans-serif', fontSize: '0.72rem', fontWeight: 600, color: 'rgba(255,255,255,0.45)', textTransform: 'uppercase', letterSpacing: '0.08em', display: 'block', marginBottom: 8 }}>{t.form.message}</label>
+                    <textarea
+                      rows={4}
+                      style={{ ...inputStyle('message'), resize: 'vertical' }}
+                      placeholder={t.form.messagePh}
+                      value={form.message}
+                      onFocus={() => setFocused('message')} onBlur={() => setFocused(null)}
+                      onChange={e => setForm(f => ({ ...f, message: e.target.value }))}
+                    />
+                  </div>
+                  <button
+                    type="submit"
+                    disabled={sending}
+                    className="py-4 rounded-xl font-bold text-lg text-white transition-all hover:scale-[1.02] active:scale-[0.99]"
+                    style={{ background: sending ? 'rgba(249,115,22,0.5)' : 'linear-gradient(135deg,#F97316,#EA580C)', fontFamily: 'Barlow Condensed, sans-serif', letterSpacing: '0.08em', fontSize: '1.1rem', boxShadow: '0 8px 32px rgba(249,115,22,0.4)', cursor: sending ? 'not-allowed' : 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 10 }}
+                  >
+                    {sending ? (
+                      <>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2.5" strokeLinecap="round" style={{ animation: 'spin 0.8s linear infinite' }}>
+                          <path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/>
+                        </svg>
+                        {t.sending}
+                      </>
+                    ) : t.form.submit}
+                  </button>
+                  <p style={{ fontFamily: 'Inter, sans-serif', fontSize: '0.73rem', color: 'rgba(255,255,255,0.25)', textAlign: 'center' }}>
+                    {t.form.disclaimer}
+                  </p>
+                </form>
+              )}
+            </div>
+          </div>
+        </div>
+
+        <div style={{ height: 80 }} />
+      </div>
+    </section>
+  )
+}
+
+const WA_TEAM = [
+  { name: 'Vanderlei', phone: '5542988041745' },
+  { name: 'Antônio',   phone: '5542998682009' },
+  { name: 'Márcio',    phone: '5542999850210' },
+  { name: 'Guilherme', phone: '5542999470347' },
+]
+
+const FORMSUBMIT_EMAIL = 'VMandaimes@gmail.com'
+function WhatsAppTeam() {
+  const { lang } = useLang()
+  const t = translations[lang].team
+  const { ref, visible } = useInView()
+  const message = encodeURIComponent(t.message)
+  return (
+    <section id="equipe-whatsapp" style={{ background: '#1C1C1E', position: 'relative', overflow: 'hidden' }}>
+      {/* background texture */}
+      <div className="absolute inset-0 pointer-events-none" style={{
+        backgroundImage: 'radial-gradient(circle at 20% 50%, rgba(249,115,22,0.06) 0%, transparent 55%), radial-gradient(circle at 80% 30%, rgba(37,211,102,0.05) 0%, transparent 50%)',
+      }} />
+      <div className="absolute inset-0 opacity-[0.03] pointer-events-none" style={{
+        backgroundImage: 'repeating-linear-gradient(0deg, transparent, transparent 40px, rgba(255,255,255,0.1) 40px, rgba(255,255,255,0.1) 41px), repeating-linear-gradient(90deg, transparent, transparent 40px, rgba(255,255,255,0.1) 40px, rgba(255,255,255,0.1) 41px)',
+      }} />
+
+      <div className="relative max-w-7xl mx-auto px-6 py-24" ref={ref}>
+        {/* heading */}
+        <div className="text-center mb-14" style={revealUp(visible)}>
+          <div className="flex items-center justify-center gap-3 mb-4">
+            <div className="h-px w-12" style={{ background: '#F97316' }} />
+            <span style={{ fontFamily: 'Inter, sans-serif', fontSize: '0.72rem', letterSpacing: '0.14em', color: '#F97316', textTransform: 'uppercase', fontWeight: 600 }}>{t.tag}</span>
+            <div className="h-px w-12" style={{ background: '#F97316' }} />
+          </div>
+          <h2 style={{ fontFamily: 'Barlow Condensed, sans-serif', fontWeight: 800, fontSize: 'clamp(2rem, 4vw, 3.2rem)', color: '#fff', lineHeight: 1.05, letterSpacing: '-0.01em' }}>
+            {t.title1} <span style={{ color: '#F97316' }}>{t.title2}</span>
+          </h2>
+          <p style={{ fontFamily: 'Barlow, sans-serif', fontSize: '1rem', color: 'rgba(255,255,255,0.45)', marginTop: 10, maxWidth: 480, margin: '10px auto 0' }}>
+            {t.subtitle}
+          </p>
+        </div>
+
+        {/* cards */}
+        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
+          {WA_TEAM.map((m, i) => (
+            <a
+              key={i}
+              href={`https://wa.me/${m.phone}?text=${message}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="wa-team-card"
+              style={{
+                display: 'flex',
+                flexDirection: 'column',
+                alignItems: 'center',
+                gap: 0,
+                borderRadius: 20,
+                background: 'rgba(255,255,255,0.04)',
+                border: '1px solid rgba(255,255,255,0.09)',
+                backdropFilter: 'blur(16px)',
+                textDecoration: 'none',
+                overflow: 'hidden',
+                opacity: visible ? 1 : 0,
+                transform: visible ? 'translateY(0)' : 'translateY(36px)',
+                transition: `opacity 0.7s cubic-bezier(0.22,1,0.36,1) ${i * 0.1}s, transform 0.7s cubic-bezier(0.22,1,0.36,1) ${i * 0.1}s, box-shadow 0.3s ease, border-color 0.3s ease`,
+                boxShadow: '0 4px 32px rgba(0,0,0,0.25)',
+              }}
+              onMouseEnter={e => {
+                const el = e.currentTarget as HTMLElement
+                el.style.borderColor = 'rgba(249,115,22,0.35)'
+                el.style.boxShadow = '0 20px 60px rgba(0,0,0,0.4), 0 0 0 1px rgba(249,115,22,0.15)'
+                el.style.transform = 'translateY(-6px)'
+              }}
+              onMouseLeave={e => {
+                const el = e.currentTarget as HTMLElement
+                el.style.borderColor = 'rgba(255,255,255,0.09)'
+                el.style.boxShadow = '0 4px 32px rgba(0,0,0,0.25)'
+                el.style.transform = 'translateY(0)'
+              }}
+            >
+              {/* card top stripe */}
+              <div style={{ width: '100%', height: 4, background: 'linear-gradient(to right, #F97316, #EA580C)', flexShrink: 0 }} />
+
+              <div style={{ padding: '2rem 1.5rem 1.75rem', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 14, width: '100%' }}>
+                {/* avatar */}
+                <div style={{
+                  width: 82, height: 82, borderRadius: '50%',
+                  background: 'linear-gradient(135deg, rgba(249,115,22,0.15), rgba(234,88,12,0.08))',
+                  border: '2px solid rgba(249,115,22,0.3)',
+                  display: 'flex', alignItems: 'center', justifyContent: 'center',
+                  boxShadow: '0 0 0 6px rgba(249,115,22,0.06)',
+                  flexShrink: 0,
+                  animationDelay: `${i * 0.18}s`,
+                }}>
+                  <AttendantIcon size={48} />
+                </div>
+
+                {/* name + role */}
+                <div style={{ textAlign: 'center' }}>
+                  <div style={{ fontFamily: 'Barlow Condensed, sans-serif', fontWeight: 800, fontSize: '1.4rem', color: '#fff', letterSpacing: '0.02em', lineHeight: 1.1 }}>{m.name}</div>
+                </div>
+
+                {/* divider */}
+                <div style={{ width: '100%', height: 1, background: 'rgba(255,255,255,0.07)' }} />
+
+                {/* cta button */}
+                <div style={{
+                  display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8,
+                  width: '100%', padding: '11px 0', borderRadius: 50,
+                  background: 'linear-gradient(135deg, #25D366, #1aad52)',
+                  color: '#fff',
+                  fontFamily: 'Barlow, sans-serif', fontWeight: 700, fontSize: '0.88rem',
+                  letterSpacing: '0.03em',
+                  boxShadow: '0 4px 20px rgba(37,211,102,0.3)',
+                }}>
+                  <svg width="17" height="17" viewBox="0 0 24 24" fill="white">
+                    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
+                    <path d="M12 0C5.373 0 0 5.373 0 12c0 2.125.557 4.117 1.532 5.845L.057 23.887l6.204-1.627A11.934 11.934 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 01-5.007-1.369l-.36-.213-3.682.965.982-3.591-.234-.371A9.818 9.818 0 1112 21.818z"/>
+                  </svg>
+                  {t.start}
+                </div>
+              </div>
+            </a>
+          ))}
+        </div>
+
+        {/* bottom note */}
+        <div className="text-center mt-10" style={revealUp(visible, 0.4)}>
+          <p style={{ fontFamily: 'Inter, sans-serif', fontSize: '0.78rem', color: 'rgba(255,255,255,0.2)', letterSpacing: '0.04em' }}>
+            {t.availability}
+          </p>
+        </div>
+      </div>
+    </section>
+  )
+}
+
+function Footer() {
+  const { lang } = useLang()
+  const t = translations[lang]
+  const tf = t.footer
+  const navT = t.nav
+
+  const navLinks = [
+    { href: '#sobre', label: navT.about },
+    { href: '#servicos', label: navT.services },
+    { href: '#diferenciais', label: navT.differentials },
+    { href: '#galeria', label: navT.gallery },
+    { href: '#contato', label: navT.contact },
+  ]
+
+  return (
+    <footer style={{ background: '#111113', color: '#fff' }}>
+      <div className="max-w-7xl mx-auto px-6 py-16">
+        <div className="footer-grid grid md:grid-cols-4 gap-8">
+          <div className="md:col-span-2">
+            <div className="mb-5">
+              <img src={logoVm} alt="VM Andaimes" style={{ height: 72, width: 'auto', objectFit: 'contain' }} />
+            </div>
+            <p style={{ fontFamily: 'Barlow, sans-serif', fontSize: '0.95rem', color: 'rgba(255,255,255,0.5)', lineHeight: 1.8, maxWidth: 320, marginBottom: '1.5rem' }}>
+              {tf.desc}
+            </p>
+            <div className="flex gap-3">
+              {[
+                { label: 'Instagram', href: 'https://www.instagram.com/vmandaimes?igsh=MWNsYjEyYml2dDVwcw==' },
+                { label: 'Facebook', href: 'https://www.facebook.com/share/19Gn5SNd9Q/' },
+                { label: 'LinkedIn', href: 'https://br.linkedin.com/in/vm-andaimes-b6562b62' },
+              ].map(sn => (
+                <a key={sn.label} href={sn.href} target="_blank" rel="noopener noreferrer"
+                  className="px-5 py-2.5 rounded-xl text-sm font-bold transition-all hover:scale-105 hover:shadow-lg"
+                  style={{ background: 'rgba(249,115,22,0.12)', color: '#F97316', fontFamily: 'Barlow, sans-serif', border: '1.5px solid rgba(249,115,22,0.4)', letterSpacing: '0.04em', textDecoration: 'none' }}>
+                  {sn.label}
+                </a>
+              ))}
+            </div>
+          </div>
+
+          <div>
+            <h4 style={{ fontFamily: 'Barlow Condensed, sans-serif', fontWeight: 700, fontSize: '1rem', letterSpacing: '0.1em', textTransform: 'uppercase', color: '#F97316', marginBottom: '1rem' }}>{tf.quickLinks}</h4>
+            {navLinks.map(l => (
+              <a key={l.href} href={l.href} className="block mb-2 transition-colors hover:text-orange-400"
+                style={{ fontFamily: 'Barlow, sans-serif', fontSize: '0.9rem', color: 'rgba(255,255,255,0.55)' }}>
+                {l.label}
+              </a>
+            ))}
+          </div>
+
+          <div>
+            <h4 style={{ fontFamily: 'Barlow Condensed, sans-serif', fontWeight: 700, fontSize: '1rem', letterSpacing: '0.1em', textTransform: 'uppercase', color: '#F97316', marginBottom: '1rem' }}>{tf.servicesTitle}</h4>
+            {t.services.items.slice(0, 5).map(s => (
+              <a key={s.title} href="#servicos" className="block mb-2 transition-colors hover:text-orange-400"
+                style={{ fontFamily: 'Barlow, sans-serif', fontSize: '0.9rem', color: 'rgba(255,255,255,0.55)' }}>
+                {s.title}
+              </a>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      <div style={{ borderTop: '1px solid rgba(255,255,255,0.06)' }}>
+        <div className="max-w-7xl mx-auto px-6 py-5 flex flex-col sm:flex-row items-center justify-between gap-3">
+          <span style={{ fontFamily: 'Inter, sans-serif', fontSize: '0.78rem', color: 'rgba(255,255,255,0.3)' }}>
+            {tf.copyright}
+          </span>
+          <div className="flex flex-wrap justify-center gap-5 items-center">
+            {[tf.privacy, tf.terms].map(l => (
+              <a key={l} href="#" className="transition-colors hover:text-white"
+                style={{ fontFamily: 'Inter, sans-serif', fontSize: '0.78rem', color: 'rgba(255,255,255,0.3)' }}>
+                {l}
+              </a>
+            ))}
+          </div>
+        </div>
+      </div>
+    </footer>
+  )
+}
+
+// ─── Trabalhe Conosco ────────────────────────────────────────────────────────
+
+function TrabalheConosco() {
+  const { lang } = useLang()
+  const t = translations[lang].careers
+  const { ref, visible } = useInView()
+  const [form, setForm] = useState({ name: '', phone: '', email: '', position: '', message: '' })
+  const [file, setFile] = useState<File | null>(null)
+  const [dragOver, setDragOver] = useState(false)
+  const [sending, setSending] = useState(false)
+  const [sent, setSent] = useState(false)
+  const [focused, setFocused] = useState<string | null>(null)
+  const fileInputRef = useRef<HTMLInputElement>(null)
+
+  const handleFile = (f: File | null) => {
+    if (!f) return
+    const ok = f.type === 'application/pdf' || f.type.startsWith('image/')
+    if (!ok) return alert(t.invalidFile)
+    if (f.size > 5 * 1024 * 1024) return alert(t.largeFile)
+    setFile(f)
+  }
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault()
+    if (!file) return alert(t.missingFile)
+    setSending(true)
+    const fd = new FormData()
+    fd.append('_subject', `Candidatura — ${form.name} | VM Andaimes`)
+    fd.append('Nome', form.name)
+    fd.append('Telefone', form.phone)
+    fd.append('Email', form.email)
+    fd.append('Cargo desejado', form.position || 'Não informado')
+    fd.append('Mensagem', form.message || 'Não informado')
+    fd.append('_captcha', 'false')
+    fd.append('_template', 'table')
+    fd.append('attachment', file)
+    try {
+      const response = await fetch(`https://formsubmit.co/ajax/${FORMSUBMIT_EMAIL}`, { method: 'POST', body: fd })
+      if (!response.ok) throw new Error('Request failed')
+      setSent(true)
+    } catch (_) {
+      alert(t.submitError)
+    } finally {
+      setSending(false)
+    }
+  }
+
+  const iStyle = (field: string): React.CSSProperties => ({
+    width: '100%', padding: '12px 16px', borderRadius: 10,
+    border: `1.5px solid ${focused === field ? '#F97316' : 'rgba(255,255,255,0.08)'}`,
+    fontFamily: 'Barlow, sans-serif', fontSize: '0.92rem', color: '#fff',
+    background: focused === field ? 'rgba(249,115,22,0.04)' : 'rgba(255,255,255,0.04)',
+    outline: 'none', transition: 'border-color 0.2s, box-shadow 0.2s, background 0.2s',
+    boxShadow: focused === field ? '0 0 0 3px rgba(249,115,22,0.12)' : 'none',
+  })
+
+  return (
+    <section id="trabalhe-conosco" style={{ background: '#141416', position: 'relative', overflow: 'hidden' }}>
+      {/* top accent bar */}
+      <div style={{ height: 3, background: 'linear-gradient(90deg,#F97316 0%,#EA580C 60%,transparent 100%)' }} />
+
+      {/* background texture */}
+      <div style={{ position: 'absolute', inset: 0, backgroundImage: 'radial-gradient(circle at 20% 40%, rgba(249,115,22,0.06) 0%, transparent 55%), radial-gradient(circle at 80% 70%, rgba(249,115,22,0.04) 0%, transparent 50%)', pointerEvents: 'none' }} />
+
+      <div className="max-w-7xl mx-auto px-6 py-24" ref={ref} style={{ position: 'relative' }}>
+
+        {/* header */}
+        <div className="mb-16" style={revealUp(visible)}>
+          <div className="flex items-center gap-3 mb-5">
+            <div style={{ width: 3, height: 28, background: 'linear-gradient(to bottom,#F97316,#EA580C)', borderRadius: 2 }} />
+            <span style={{ fontFamily: 'Inter, sans-serif', fontSize: '0.7rem', letterSpacing: '0.16em', color: '#F97316', textTransform: 'uppercase', fontWeight: 600 }}>{t.tag}</span>
+          </div>
+          <h2 style={{ fontFamily: 'Barlow Condensed, sans-serif', fontWeight: 800, fontSize: 'clamp(2.2rem, 4.5vw, 3.6rem)', color: '#fff', lineHeight: 1, letterSpacing: '-0.01em' }}>
+            {t.title1} <span style={{ color: '#F97316' }}>{t.title2}</span>
+          </h2>
+          <p style={{ fontFamily: 'Barlow, sans-serif', fontSize: '1rem', color: 'rgba(255,255,255,0.45)', marginTop: 12, maxWidth: 480, lineHeight: 1.65 }}>
+            {t.subtitle}
+          </p>
+        </div>
+
+        <div className="tc-grid grid lg:grid-cols-2 gap-12 items-start">
+
+          {/* Left — vacancy cards */}
+          <div className="flex flex-col gap-4">
+            {t.vacancies.map((v, i) => {
+              const VIcon = VACANCY_ICONS[i]
+              return (
+              <div key={i}
+                style={{
+                  display: 'flex', alignItems: 'flex-start', gap: 18,
+                  padding: '20px 22px',
+                  borderRadius: 16,
+                  background: 'rgba(255,255,255,0.03)',
+                  border: '1px solid rgba(255,255,255,0.07)',
+                  transition: `opacity 0.6s cubic-bezier(0.22,1,0.36,1) ${i * 0.1 + 0.1}s, transform 0.6s cubic-bezier(0.22,1,0.36,1) ${i * 0.1 + 0.1}s, border-color 0.25s, background 0.25s`,
+                  opacity: visible ? 1 : 0,
+                  transform: visible ? 'translateY(0)' : 'translateY(20px)',
+                  cursor: 'default',
+                }}
+                onMouseEnter={e => {
+                  (e.currentTarget as HTMLDivElement).style.borderColor = 'rgba(249,115,22,0.3)'
+                  ;(e.currentTarget as HTMLDivElement).style.background = 'rgba(249,115,22,0.04)'
+                }}
+                onMouseLeave={e => {
+                  (e.currentTarget as HTMLDivElement).style.borderColor = 'rgba(255,255,255,0.07)'
+                  ;(e.currentTarget as HTMLDivElement).style.background = 'rgba(255,255,255,0.03)'
+                }}
+              >
+                <div style={{ width: 48, height: 48, borderRadius: 12, background: 'rgba(249,115,22,0.1)', border: '1px solid rgba(249,115,22,0.2)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0, marginTop: 2 }}>
+                  <VIcon />
+                </div>
+                <div style={{ flex: 1 }}>
+                  <div className="vacancy-heading" style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 4 }}>
+                    <span style={{ fontFamily: 'Barlow Condensed, sans-serif', fontWeight: 700, fontSize: '1.05rem', color: '#fff', letterSpacing: '0.02em' }}>{v.title}</span>
+                    <span style={{ fontFamily: 'Inter, sans-serif', fontSize: '0.62rem', fontWeight: 600, color: '#F97316', background: 'rgba(249,115,22,0.1)', border: '1px solid rgba(249,115,22,0.25)', borderRadius: 6, padding: '2px 8px', letterSpacing: '0.06em', textTransform: 'uppercase' }}>{v.tag}</span>
+                  </div>
+                  <p style={{ fontFamily: 'Inter, sans-serif', fontSize: '0.82rem', color: 'rgba(255,255,255,0.42)', lineHeight: 1.6, margin: 0 }}>{v.desc}</p>
+                </div>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="rgba(249,115,22,0.4)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{ flexShrink: 0, marginTop: 6 }}>
+                  <path d="M5 12h14M12 5l7 7-7 7"/>
+                </svg>
+              </div>
+              )
+            })}
+
+            {/* bottom note */}
+            <div style={{ display: 'flex', alignItems: 'center', gap: 12, padding: '16px 20px', borderRadius: 12, background: 'rgba(249,115,22,0.06)', border: '1px solid rgba(249,115,22,0.15)', marginTop: 4, opacity: visible ? 1 : 0, transition: 'opacity 0.7s ease 0.55s' }}>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#F97316" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/>
+              </svg>
+              <p style={{ fontFamily: 'Inter, sans-serif', fontSize: '0.78rem', color: 'rgba(255,255,255,0.45)', margin: 0, lineHeight: 1.5 }}>
+                {t.note}
+              </p>
+            </div>
+          </div>
+
+          {/* Right — form */}
+          <div style={{ borderRadius: 20, background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.08)', overflow: 'hidden', opacity: visible ? 1 : 0, transition: 'opacity 0.7s ease 0.25s, transform 0.7s ease 0.25s', transform: visible ? 'translateY(0)' : 'translateY(24px)' }}>
+            {/* form header stripe */}
+            <div style={{ padding: '22px 28px', borderBottom: '1px solid rgba(255,255,255,0.06)', background: 'rgba(249,115,22,0.05)' }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
+                <div style={{ width: 40, height: 40, borderRadius: 10, background: 'linear-gradient(135deg,#F97316,#EA580C)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/>
+                  </svg>
+                </div>
+                <div>
+                  <div style={{ fontFamily: 'Barlow Condensed, sans-serif', fontWeight: 800, fontSize: '1.15rem', color: '#fff', letterSpacing: '0.04em' }}>{t.formTitle}</div>
+                  <div style={{ fontFamily: 'Inter, sans-serif', fontSize: '0.72rem', color: 'rgba(255,255,255,0.35)', marginTop: 1 }}>{t.fileTypes}</div>
+                </div>
+              </div>
+            </div>
+
+            <div className="tc-form-inner" style={{ padding: '24px 28px' }}>
+              {sent ? (
+                <div className="flex flex-col items-center justify-center py-10 text-center gap-5">
+                  <div style={{ width: 76, height: 76, borderRadius: '50%', background: 'rgba(249,115,22,0.1)', border: '2px solid rgba(249,115,22,0.3)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                    <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#F97316" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                      <polyline points="20 6 9 17 4 12"/>
+                    </svg>
+                  </div>
+                  <div>
+                    <div style={{ fontFamily: 'Barlow Condensed, sans-serif', fontWeight: 800, fontSize: '1.9rem', color: '#fff', marginBottom: 8 }}>{t.successTitle}</div>
+                    <p style={{ fontFamily: 'Barlow, sans-serif', color: 'rgba(255,255,255,0.45)', fontSize: '0.95rem', lineHeight: 1.6 }}>{t.successBody}</p>
+                  </div>
+                  <button onClick={() => { setSent(false); setForm({ name: '', phone: '', email: '', position: '', message: '' }); setFile(null) }}
+                    style={{ padding: '12px 28px', borderRadius: 50, fontFamily: 'Barlow Condensed, sans-serif', fontWeight: 700, fontSize: '0.95rem', letterSpacing: '0.06em', color: '#fff', background: 'linear-gradient(135deg,#F97316,#EA580C)', border: 'none', cursor: 'pointer', transition: 'transform 0.2s' }}
+                    onMouseEnter={e => (e.currentTarget.style.transform = 'scale(1.04)')}
+                    onMouseLeave={e => (e.currentTarget.style.transform = 'scale(1)')}>
+                    {t.sendAnother}
+                  </button>
+                </div>
+              ) : (
+                <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
+                  <div className="tc-fields-grid" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 14 }}>
+                    <div>
+                      <label style={{ fontFamily: 'Inter, sans-serif', fontSize: '0.66rem', fontWeight: 600, color: 'rgba(255,255,255,0.35)', textTransform: 'uppercase', letterSpacing: '0.1em', display: 'block', marginBottom: 7 }}>{t.labels.name}</label>
+                      <input required style={iStyle('name')} placeholder={t.placeholders.name}
+                        value={form.name} onFocus={() => setFocused('name')} onBlur={() => setFocused(null)}
+                        onChange={e => setForm(f => ({ ...f, name: e.target.value }))} />
+                    </div>
+                    <div>
+                      <label style={{ fontFamily: 'Inter, sans-serif', fontSize: '0.66rem', fontWeight: 600, color: 'rgba(255,255,255,0.35)', textTransform: 'uppercase', letterSpacing: '0.1em', display: 'block', marginBottom: 7 }}>{t.labels.phone}</label>
+                      <input required style={iStyle('phone')} placeholder={t.placeholders.phone}
+                        value={form.phone} onFocus={() => setFocused('phone')} onBlur={() => setFocused(null)}
+                        onChange={e => setForm(f => ({ ...f, phone: e.target.value }))} />
+                    </div>
+                  </div>
+
+                  <div>
+                    <label style={{ fontFamily: 'Inter, sans-serif', fontSize: '0.66rem', fontWeight: 600, color: 'rgba(255,255,255,0.35)', textTransform: 'uppercase', letterSpacing: '0.1em', display: 'block', marginBottom: 7 }}>{t.labels.email}</label>
+                    <input required type="email" style={iStyle('email')} placeholder={t.placeholders.email}
+                      value={form.email} onFocus={() => setFocused('email')} onBlur={() => setFocused(null)}
+                      onChange={e => setForm(f => ({ ...f, email: e.target.value }))} />
+                  </div>
+
+                  <div>
+                    <label style={{ fontFamily: 'Inter, sans-serif', fontSize: '0.66rem', fontWeight: 600, color: 'rgba(255,255,255,0.35)', textTransform: 'uppercase', letterSpacing: '0.1em', display: 'block', marginBottom: 7 }}>{t.labels.position}</label>
+                    <select style={{ ...iStyle('position'), cursor: 'pointer', appearance: 'none' as const }}
+                      value={form.position} onFocus={() => setFocused('position')} onBlur={() => setFocused(null)}
+                      onChange={e => setForm(f => ({ ...f, position: e.target.value }))}>
+                      <option value="" style={{ background: '#1a1a1c' }}>{t.placeholders.position}</option>
+                      {t.positions.map(o => (
+                        <option key={o} value={o} style={{ background: '#1a1a1c' }}>{o}</option>
+                      ))}
+                    </select>
+                  </div>
+
+                  <div>
+                    <label style={{ fontFamily: 'Inter, sans-serif', fontSize: '0.66rem', fontWeight: 600, color: 'rgba(255,255,255,0.35)', textTransform: 'uppercase', letterSpacing: '0.1em', display: 'block', marginBottom: 7 }}>{t.labels.message}</label>
+                    <textarea rows={2} style={{ ...iStyle('message'), resize: 'none' }}
+                      placeholder={t.placeholders.message}
+                      value={form.message} onFocus={() => setFocused('message')} onBlur={() => setFocused(null)}
+                      onChange={e => setForm(f => ({ ...f, message: e.target.value }))} />
+                  </div>
+
+                  {/* drag & drop upload */}
+                  <div>
+                    <label style={{ fontFamily: 'Inter, sans-serif', fontSize: '0.66rem', fontWeight: 600, color: 'rgba(255,255,255,0.35)', textTransform: 'uppercase', letterSpacing: '0.1em', display: 'block', marginBottom: 7 }}>{t.labels.resume}</label>
+                    <div
+                      onClick={() => fileInputRef.current?.click()}
+                      onDragOver={e => { e.preventDefault(); setDragOver(true) }}
+                      onDragLeave={() => setDragOver(false)}
+                      onDrop={e => { e.preventDefault(); setDragOver(false); handleFile(e.dataTransfer.files[0]) }}
+                      style={{
+                        border: `2px dashed ${dragOver ? '#F97316' : file ? 'rgba(249,115,22,0.45)' : 'rgba(255,255,255,0.1)'}`,
+                        borderRadius: 12, padding: '20px 18px',
+                        background: dragOver ? 'rgba(249,115,22,0.06)' : file ? 'rgba(249,115,22,0.04)' : 'rgba(255,255,255,0.02)',
+                        cursor: 'pointer', transition: 'all 0.2s',
+                        display: 'flex', alignItems: 'center', gap: 14,
+                      }}
+                    >
+                      <div style={{ width: 44, height: 44, borderRadius: 11, background: file ? 'rgba(249,115,22,0.15)' : 'rgba(255,255,255,0.05)', border: `1px solid ${file ? 'rgba(249,115,22,0.3)' : 'rgba(255,255,255,0.07)'}`, display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+                        {file ? (
+                          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#F97316" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                            <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><polyline points="9 15 12 18 15 15"/><line x1="12" y1="12" x2="12" y2="18"/>
+                          </svg>
+                        ) : (
+                          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.3)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                            <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/>
+                          </svg>
+                        )}
+                      </div>
+                      <div style={{ flex: 1, minWidth: 0 }}>
+                        {file ? (
+                          <>
+                            <div style={{ fontFamily: 'Barlow, sans-serif', fontWeight: 600, fontSize: '0.87rem', color: '#F97316', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>{file.name}</div>
+                            <div style={{ fontFamily: 'Inter, sans-serif', fontSize: '0.7rem', color: 'rgba(255,255,255,0.3)', marginTop: 2 }}>{(file.size / 1024).toFixed(0)} KB · {t.replaceFile}</div>
+                          </>
+                        ) : (
+                          <>
+                            <div style={{ fontFamily: 'Barlow, sans-serif', fontWeight: 600, fontSize: '0.87rem', color: 'rgba(255,255,255,0.55)' }}>{t.upload}</div>
+                            <div style={{ fontFamily: 'Inter, sans-serif', fontSize: '0.7rem', color: 'rgba(255,255,255,0.28)', marginTop: 2 }}>{t.fileTypes}</div>
+                          </>
+                        )}
+                      </div>
+                      {file && (
+                        <button type="button" onClick={e => { e.stopPropagation(); setFile(null) }}
+                          style={{ background: 'rgba(255,255,255,0.07)', border: '1px solid rgba(255,255,255,0.1)', borderRadius: '50%', width: 28, height: 28, display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer', flexShrink: 0 }}>
+                          <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.5)" strokeWidth="2.5" strokeLinecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+                        </button>
+                      )}
+                    </div>
+                    <input ref={fileInputRef} type="file" accept=".pdf,image/*" style={{ display: 'none' }}
+                      onChange={e => handleFile(e.target.files?.[0] ?? null)} />
+                  </div>
+
+                  <button type="submit" disabled={sending}
+                    style={{
+                      padding: '15px 0', borderRadius: 12, border: 'none',
+                      fontFamily: 'Barlow Condensed, sans-serif', fontWeight: 800, fontSize: '1rem', letterSpacing: '0.1em', color: '#fff',
+                      background: sending ? 'rgba(249,115,22,0.45)' : 'linear-gradient(135deg,#F97316,#EA580C)',
+                      boxShadow: sending ? 'none' : '0 8px 28px rgba(249,115,22,0.35)',
+                      cursor: sending ? 'not-allowed' : 'pointer',
+                      display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 10,
+                      transition: 'transform 0.15s, box-shadow 0.15s', marginTop: 4,
+                    }}
+                    onMouseEnter={e => { if (!sending) (e.currentTarget.style.transform = 'scale(1.02)') }}
+                    onMouseLeave={e => { (e.currentTarget.style.transform = 'scale(1)') }}>
+                    {sending ? (
+                      <>
+                        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2.5" strokeLinecap="round" style={{ animation: 'spin 0.8s linear infinite' }}>
+                          <path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/>
+                        </svg>
+                        {t.submitting}
+                      </>
+                    ) : (
+                      <>
+                        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+                          <line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/>
+                        </svg>
+                        {t.submit}
+                      </>
+                    )}
+                  </button>
+                  <p style={{ fontFamily: 'Inter, sans-serif', fontSize: '0.7rem', color: 'rgba(255,255,255,0.18)', textAlign: 'center', marginTop: 2 }}>
+                    {t.privacy}
+                  </p>
+                </form>
+              )}
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+  )
+}
+
+// ─── Floating WhatsApp Menu ──────────────────────────────────────────────────
+
+function WhatsAppFloat() {
+  const { lang } = useLang()
+  const t = translations[lang].team
+  const [open, setOpen] = useState(false)
+  const ref = useRef<HTMLDivElement>(null)
+  const message = encodeURIComponent(t.message)
+
+  useEffect(() => {
+    const handler = (e: MouseEvent) => {
+      if (ref.current && !ref.current.contains(e.target as Node)) setOpen(false)
+    }
+    document.addEventListener('mousedown', handler)
+    return () => document.removeEventListener('mousedown', handler)
+  }, [])
+
+  return (
+    <div ref={ref} className="whatsapp-float" style={{ position: 'fixed', bottom: '2rem', right: '2rem', zIndex: 999, display: 'flex', flexDirection: 'column', alignItems: 'flex-end', gap: 10 }}>
+
+      {/* team popup */}
+      {open && (
+        <div style={{
+          background: 'rgba(20,20,22,0.97)',
+          border: '1px solid rgba(255,255,255,0.1)',
+          borderRadius: 16,
+          backdropFilter: 'blur(20px)',
+          boxShadow: '0 16px 56px rgba(0,0,0,0.5)',
+          overflow: 'hidden',
+          width: 240,
+          animation: 'waPopIn 0.22s cubic-bezier(0.22,1,0.36,1)',
+          transformOrigin: 'bottom right',
+        }}>
+          {/* header */}
+          <div style={{ padding: '12px 16px', borderBottom: '1px solid rgba(255,255,255,0.07)', display: 'flex', alignItems: 'center', gap: 10 }}>
+            <div style={{ width: 8, height: 8, borderRadius: '50%', background: '#25D366', boxShadow: '0 0 6px #25D366' }} className="animate-pulse" />
+            <span style={{ fontFamily: 'Barlow, sans-serif', fontWeight: 700, fontSize: '0.82rem', color: '#fff', letterSpacing: '0.02em' }}>{t.floatTitle}</span>
+          </div>
+
+          {/* contacts */}
+          <div style={{ padding: '8px 0' }}>
+            {WA_TEAM.map((m, i) => (
+              <a
+                key={i}
+                href={`https://wa.me/${m.phone}?text=${message}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{ display: 'flex', alignItems: 'center', gap: 12, padding: '10px 16px', textDecoration: 'none', transition: 'background 0.15s' }}
+                onMouseEnter={e => (e.currentTarget.style.background = 'rgba(37,211,102,0.08)')}
+                onMouseLeave={e => (e.currentTarget.style.background = 'transparent')}
+              >
+                {/* avatar */}
+                <div style={{
+                  width: 38, height: 38, borderRadius: '50%', flexShrink: 0,
+                  background: 'linear-gradient(135deg, rgba(249,115,22,0.2), rgba(234,88,12,0.1))',
+                  border: '1.5px solid rgba(249,115,22,0.35)',
+                  display: 'flex', alignItems: 'center', justifyContent: 'center',
+                }}>
+                  <AttendantIcon size={22} />
+                </div>
+
+                {/* name + cta */}
+                <div style={{ flex: 1 }}>
+                  <div style={{ fontFamily: 'Barlow Condensed, sans-serif', fontWeight: 700, fontSize: '1rem', color: '#fff', lineHeight: 1.1 }}>{m.name}</div>
+                  <div style={{ fontFamily: 'Inter, sans-serif', fontSize: '0.68rem', color: '#25D366', fontWeight: 600, marginTop: 2 }}>{t.floatCta}</div>
+                </div>
+
+                {/* wa icon */}
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="#25D366" style={{ flexShrink: 0, opacity: 0.8 }}>
+                  <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
+                  <path d="M12 0C5.373 0 0 5.373 0 12c0 2.125.557 4.117 1.532 5.845L.057 23.887l6.204-1.627A11.934 11.934 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 01-5.007-1.369l-.36-.213-3.682.965.982-3.591-.234-.371A9.818 9.818 0 1112 21.818z"/>
+                </svg>
+              </a>
+            ))}
+          </div>
+        </div>
+      )}
+
+      {/* main button */}
+      <button
+        onClick={() => setOpen(o => !o)}
+        type="button"
+        aria-expanded={open}
+        aria-label={open ? 'Fechar contatos do WhatsApp' : t.buttonTitle}
+        className="whatsapp-btn"
+        title={t.buttonTitle}
+        style={{ position: 'static', transform: open ? 'scale(1.1) rotate(0deg)' : 'scale(1)', transition: 'transform 0.2s ease, box-shadow 0.2s ease' }}
+      >
+        {open ? (
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2.5" strokeLinecap="round">
+            <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
+          </svg>
+        ) : (
+          <WhatsAppIcon />
+        )}
+      </button>
+    </div>
+  )
+}
+
+// ─── App ─────────────────────────────────────────────────────────────────────
+
+export default function App() {
+  const [lang, setLang] = useState<Lang>(() => {
+    const saved = localStorage.getItem('vm-language')
+    return saved === 'en' || saved === 'es' || saved === 'pt' ? saved : 'pt'
+  })
+
+  useEffect(() => {
+    localStorage.setItem('vm-language', lang)
+    document.documentElement.lang = lang === 'pt' ? 'pt-BR' : lang
+  }, [lang])
+
+  return (
+    <LangContext.Provider value={{ lang, setLang }}>
+      <ScrollProgress />
+      <Navbar />
+      <Hero />
+      <About />
+      <Services />
+      <Differentials />
+      <Gallery />
+      <Stats />
+      <Contact />
+      <WhatsAppTeam />
+      <TrabalheConosco />
+      <Footer />
+
+      <WhatsAppFloat />
+    </LangContext.Provider>
+  )
+}
