@@ -24,6 +24,9 @@ export default defineConfig(({ mode }) => {
       figmaReactRefreshBoundaryFallback(),
       figmaMakeKitPlugin({ storiesGlob: '/src/**/*.stories.{ts,tsx,js,jsx}' }),
     ],
+define: {
+  'process.env': {}
+},
     resolve: {
       alias: {
         '@': path.resolve(__dirname, './src'),
