@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef, createContext, useContext, type FC } from 'react'
 import logoVm from '@/imports/logo_vm-1.png'
-import galleryPhoto1 from '@/imports/WhatsApp_Image_2026-07-30_at_18.17.30__1_-1.jpeg'
+import galleryPhoto1 from './imports/WhatsApp_Image_2026-07-30_at_18.17.30__1_-1.jpeg'
 import galleryPhoto2 from '@/imports/WhatsApp_Image_2026-07-30_at_18.17.30-1.jpeg'
 import galleryPhoto3 from '@/imports/WhatsApp_Image_2026-07-30_at_18.17.29__1_.jpeg'
 import galleryPhoto4 from '@/imports/WhatsApp_Image_2026-07-30_at_18.17.29.jpeg'
