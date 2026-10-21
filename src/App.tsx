@@ -769,17 +769,21 @@ function Gallery() {
   const [activeIndex, setActiveIndex] = useState(0)
 
   const galleryUrls = [
-  "/WhatsApp_Image_2026-07-30_at_18.17.30__1_-1.jpeg",
-  "/WhatsApp_Image_2026-07-30_at_18.17.30-1.jpeg",
-  "/WhatsApp_Image_2026-07-30_at_18.17.29__1_-1.jpeg",
-  "/WhatsApp_Image_2026-07-30_at_18.17.29.jpeg",
-  "/WhatsApp_Image_2026-07-31_at_12.37.16.jpeg",
-  "/WhatsApp_Image_2026-07-31_at_12.37.16__3_.jpeg",
-  "/WhatsApp_Image_2026-07-31_at_12.37.17.jpeg",
-  "/WhatsApp_Image_2026-07-31_at_12.37.17__1_.jpeg",
-  "/ChatGPT_Image_31_de_jul._de_2026___13_16_10.png",
-  "/ChatGPT_Image_31_de_jul._de_2026___13_17_06.png"
-]  const galleryImages = galleryUrls.map((url, index) => ({ url: url as unknown as string, alt: t.imageAlts[index] }))
+  "/foto1.png",
+  "/foto2.png",
+  "/foto3.png",
+  "/foto4.jpeg",
+  "/foto5.jpeg",
+  "/foto6.jpeg",
+  "/foto7.jpeg",
+  "/foto8.jpeg",
+  "/foto9.jpeg",
+  "/foto10.jpeg",
+  "/foto11.jpeg",
+  "/foto12.jpeg",
+  "/foto13.jpeg"
+]  
+const galleryImages = galleryUrls.map((url, index) => ({ url: url as unknown as string, alt: t.imageAlts[index] }))
 
   const updateArrows = () => {
     const el = trackRef.current
