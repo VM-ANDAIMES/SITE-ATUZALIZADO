@@ -1,16 +1,4 @@
 import { useState, useEffect, useRef, createContext, useContext, type FC } from 'react'
-import logoVm from <img src="/logo_vm-1.png" .../>
-import galleryPhoto1 from '@/imports/WhatsApp_Image_2026-07-30_at_18.17.30__1_-1.jpeg'
-import galleryPhoto2 from '<img src="/WhatsApp_Image_2026-07-30_at_18.17.30-1.jpeg" .../>
-import galleryPhoto3 from '@/imports/WhatsApp_Image_2026-07-30_at_18.17.29__1_.jpeg'
-import galleryPhoto4 from '@/imports/WhatsApp_Image_2026-07-30_at_18.17.29.jpeg'
-import galleryPhoto5 from '@/imports/WhatsApp_Image_2026-07-31_at_12.37.16.jpeg'
-import galleryPhoto6 from '@/imports/WhatsApp_Image_2026-07-31_at_12.37.16__3_.jpeg'
-import galleryPhoto7 from '@/imports/WhatsApp_Image_2026-07-31_at_12.37.17.jpeg'
-import galleryPhoto8 from '@/imports/WhatsApp_Image_2026-07-31_at_12.37.17__1_.jpeg'
-import galleryPhoto9 from '@/imports/ChatGPT_Image_31_de_jul._de_2026__13_16_10.png'
-import galleryPhoto10 from '@/imports/ChatGPT_Image_31_de_jul._de_2026__13_17_06.png'
-import { useState, useEffect, useRef, createContext, useContext, type FC } from 'react';
 import { translations, type Lang } from './translations';
 
 // Language Context
@@ -780,8 +768,18 @@ function Gallery() {
   const [canScrollRight, setCanScrollRight] = useState(true)
   const [activeIndex, setActiveIndex] = useState(0)
 
-  const galleryUrls = [galleryPhoto1, galleryPhoto2, galleryPhoto3, galleryPhoto4, galleryPhoto5, galleryPhoto6, galleryPhoto7, galleryPhoto8, galleryPhoto9, galleryPhoto10]
-  const galleryImages = galleryUrls.map((url, index) => ({ url: url as unknown as string, alt: t.imageAlts[index] }))
+  const galleryUrls = [
+  "/WhatsApp_Image_2026-07-30_at_18.17.30__1_-1.jpeg",
+  "/WhatsApp_Image_2026-07-30_at_18.17.30-1.jpeg",
+  "/WhatsApp_Image_2026-07-30_at_18.17.29__1_-1.jpeg",
+  "/WhatsApp_Image_2026-07-30_at_18.17.29.jpeg",
+  "/WhatsApp_Image_2026-07-31_at_12.37.16.jpeg",
+  "/WhatsApp_Image_2026-07-31_at_12.37.16__3_.jpeg",
+  "/WhatsApp_Image_2026-07-31_at_12.37.17.jpeg",
+  "/WhatsApp_Image_2026-07-31_at_12.37.17__1_.jpeg",
+  "/ChatGPT_Image_31_de_jul._de_2026___13_16_10.png",
+  "/ChatGPT_Image_31_de_jul._de_2026___13_17_06.png"
+]  const galleryImages = galleryUrls.map((url, index) => ({ url: url as unknown as string, alt: t.imageAlts[index] }))
 
   const updateArrows = () => {
     const el = trackRef.current
@@ -1528,7 +1526,7 @@ function Footer() {
         <div className="footer-grid grid md:grid-cols-4 gap-8">
           <div className="md:col-span-2">
             <div className="mb-5">
-              <img src={logoVm} alt="VM Andaimes" style={{ height: 72, width: 'auto', objectFit: 'contain' }} />
+              <img src="/logo_vm-1.png" alt="VM Andaimes" style={{ height: 72, width: 'auto', objectFit: 'contain' }} />
             </div>
             <p style={{ fontFamily: 'Barlow, sans-serif', fontSize: '0.95rem', color: 'rgba(255,255,255,0.5)', lineHeight: 1.8, maxWidth: 320, marginBottom: '1.5rem' }}>
               {tf.desc}
