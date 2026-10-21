@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef, createContext, useContext, type FC } from 'react'
-import logoVm from '@/imports/logo_vm-1.png'
+import logoVm from <img src="/logo_vm-1.png" .../>
 import galleryPhoto1 from '@/imports/WhatsApp_Image_2026-07-30_at_18.17.30__1_-1.jpeg'
-import galleryPhoto2 from '@/imports/WhatsApp_Image_2026-07-30_at_18.17.30-1.jpeg'
+import galleryPhoto2 from '<img src="/WhatsApp_Image_2026-07-30_at_18.17.30-1.jpeg" .../>
 import galleryPhoto3 from '@/imports/WhatsApp_Image_2026-07-30_at_18.17.29__1_.jpeg'
 import galleryPhoto4 from '@/imports/WhatsApp_Image_2026-07-30_at_18.17.29.jpeg'
 import galleryPhoto5 from '@/imports/WhatsApp_Image_2026-07-31_at_12.37.16.jpeg'
@@ -10,14 +10,14 @@ import galleryPhoto7 from '@/imports/WhatsApp_Image_2026-07-31_at_12.37.17.jpeg'
 import galleryPhoto8 from '@/imports/WhatsApp_Image_2026-07-31_at_12.37.17__1_.jpeg'
 import galleryPhoto9 from '@/imports/ChatGPT_Image_31_de_jul._de_2026__13_16_10.png'
 import galleryPhoto10 from '@/imports/ChatGPT_Image_31_de_jul._de_2026__13_17_06.png'
-import { translations, type Lang } from './translations'
-import calCenterImg from '@/imports/cal_center.png';
+import { useState, useEffect, useRef, createContext, useContext, type FC } from 'react';
+import { translations, type Lang } from './translations';
 
-// Language Context 
+// Language Context
 const LangContext = createContext<{ lang: Lang; setLang: (l: Lang) => void }>({ lang: 'pt', setLang: () => {} })
 const useLang = () => useContext(LangContext)
 
-//  Scroll Progress Bar 
+// Scroll Progress Bar
 function ScrollProgress() {
   const [progress, setProgress] = useState(0)
   useEffect(() => {
@@ -32,6 +32,7 @@ function ScrollProgress() {
       })
     }
     window.addEventListener('scroll', onScroll, { passive: true })
+    // ... restante do código do ScrollProgress
     onScroll()
     return () => {
       window.removeEventListener('scroll', onScroll)
