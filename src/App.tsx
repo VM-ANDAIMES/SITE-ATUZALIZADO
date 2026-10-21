@@ -12,8 +12,7 @@ import galleryPhoto9 from '@/imports/ChatGPT_Image_31_de_jul._de_2026__13_16_10.
 import galleryPhoto10 from '@/imports/ChatGPT_Image_31_de_jul._de_2026__13_17_06.png'
 import { translations, type Lang } from './translations'
 import calCenterImg from '@/imports/cal_center.png'//
-//Language Context ────────────────────────────────────────────────────────
-
+//--Language Context
 const LangContext = createContext<{ lang: Lang; setLang: (l: Lang) => void }>({ lang: 'pt', setLang: () => {} })
 const useLang = () => useContext(LangContext)
 
