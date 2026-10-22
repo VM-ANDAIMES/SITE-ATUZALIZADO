@@ -514,10 +514,60 @@ function Hero() {
             marginBottom: '1.75rem',
             textShadow: '0 4px 32px rgba(0,0,0,0.4)',
           }}>
-            {th.title1}<br />
-            <span style={{ color: '#F97316' }}>{th.title2}</span><br />
-            {th.title3}
-          </motion.h1>
+            <motion.span
+            animate={{
+             y: [0, -5, 0],
+             opacity: [1, 0.85, 1],
+            }}
+            transition={{
+             duration: 3,
+             repeat: Infinity,
+             ease: "easeInOut",
+            }}
+            style={{ display: 'inline-block' }}
+           >
+            {th.title1}
+           </motion.span>
+
+           <br />
+
+          <motion.span
+           animate={{
+            y: [0, -5, 0],
+            opacity: [1, 0.85, 1],
+         }}
+         transition={{
+         duration: 3,
+         repeat: Infinity,
+         ease: "easeInOut",
+         delay: 0.5,
+        }}
+        style={{
+         display: 'inline-block',
+         color: '#F97316'
+        }}
+       >
+        {th.title2}
+      </motion.span>
+
+      <br />
+
+      <motion.span
+       animate={{
+        y: [0, -5, 0],
+        opacity: [1, 0.85, 1],
+      }}
+      transition={{
+      duration: 3,
+      repeat: Infinity,
+      ease: "easeInOut",
+      delay: 1,
+    }}
+    style={{ display: 'inline-block' }}
+   >
+   {th.title3}
+  </motion.span>          
+  </motion.h1>
           <p style={{
             fontFamily: 'Inter, sans-serif',
             fontSize: '1rem',
