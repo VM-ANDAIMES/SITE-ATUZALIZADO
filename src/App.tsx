@@ -133,7 +133,7 @@ const PlanIcon = () => (
 
 const AttendantIcon = ({ size = 48 }: { size?: number }) => (
   <img
-    src={calCenterImg as unknown as string}
+    src="/cal_center.png"
     alt="Atendente"
     width={size}
     height={size}
