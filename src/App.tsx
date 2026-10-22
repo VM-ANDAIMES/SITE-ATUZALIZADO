@@ -220,16 +220,16 @@ function revealUp(visible: boolean, delay = 0): React.CSSProperties {
 function revealLeft(visible: boolean, delay = 0): React.CSSProperties {
   return {
     opacity: visible ? 1 : 0,
-    transform: visible ? 'translateX(0)' : 'translateX(-48px)',
-    transition: `opacity 0.8s cubic-bezier(0.22,1,0.36,1) ${delay}s, transform 0.8s cubic-bezier(0.22,1,0.36,1) ${delay}s`,
+    transform: visible ? 'translateX(0)' : 'translateX(-20px)',
+    transition: `opacity 0.6s ease ${delay}s, transform 0.6s ease ${delay}s`,
   }
 }
 
 function revealRight(visible: boolean, delay = 0): React.CSSProperties {
   return {
     opacity: visible ? 1 : 0,
-    transform: visible ? 'translateX(0)' : 'translateX(48px)',
-    transition: `opacity 0.8s cubic-bezier(0.22,1,0.36,1) ${delay}s, transform 0.8s cubic-bezier(0.22,1,0.36,1) ${delay}s`,
+    transform: visible ? 'translateX(0)' : 'translateX(20px)',
+    transition: `opacity 0.6s ease ${delay}s, transform 0.6s ease ${delay}s`,
   }
 }
 
