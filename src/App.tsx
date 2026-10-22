@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef, createContext, useContext, type FC } from 'react'
 import { translations, type Lang } from './translations';
+import { motion } from 'motion/react';
 
 // Language Context
 const LangContext = createContext<{ lang: Lang; setLang: (l: Lang) => void }>({ lang: 'pt', setLang: () => {} })
@@ -470,8 +471,11 @@ function Hero() {
   const stats = t.stats
 
   return (
-    <section
+    <motion.section
       id="hero"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 1 }}
       className="relative min-h-screen flex items-center justify-center overflow-hidden"
       style={{ background: '#1C1C1E' }}
     >
@@ -496,7 +500,11 @@ function Hero() {
             <span style={{ fontSize: '0.75rem', fontWeight: 700, color: '#F97316', letterSpacing: '0.1em', textTransform: 'uppercase' }}>{th.badge}</span>
           </div>
 
-          <h1 style={{
+          <motion.h1 style={{
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.4 }}
+            style={{
             fontFamily: 'Barlow Condensed, sans-serif',
             fontWeight: 800,
             fontSize: 'clamp(3rem, 8vw, 6rem)',
@@ -509,8 +517,7 @@ function Hero() {
             {th.title1}<br />
             <span style={{ color: '#F97316' }}>{th.title2}</span><br />
             {th.title3}
-          </h1>
-
+          </motion.h1>
           <p style={{
             fontFamily: 'Inter, sans-serif',
             fontSize: '1rem',
@@ -547,7 +554,7 @@ function Hero() {
       <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 opacity-40">
         <div className="w-px h-10 bg-white opacity-40" style={{ background: 'linear-gradient(to bottom, transparent, white)' }} />
       </div>
-    </section>
+    </motion.section>
   )
 }
 
