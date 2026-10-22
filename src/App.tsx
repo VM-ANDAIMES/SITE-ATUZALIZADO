@@ -500,10 +500,10 @@ function Hero() {
             <span style={{ fontSize: '0.75rem', fontWeight: 700, color: '#F97316', letterSpacing: '0.1em', textTransform: 'uppercase' }}>{th.badge}</span>
           </div>
 
-          <motion.h1 style={{
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.4 }}
+          <motion.h1 
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 1 }}
             style={{
             fontFamily: 'Barlow Condensed, sans-serif',
             fontWeight: 800,
