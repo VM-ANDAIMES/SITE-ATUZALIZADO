@@ -388,7 +388,7 @@ function Navbar() {
       <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
         <a href="#" className="flex items-center group">
           <img
-            src={logoVm}
+            src="/logo_vm-1.png"
             alt="VM Andaimes"
             className="navbar-logo"
             style={{ height: 68, width: 'auto', objectFit: 'contain', border: 'none' }}
