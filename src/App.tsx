@@ -133,7 +133,7 @@ const PlanIcon = () => (
 
 const AttendantIcon = ({ size = 48 }: { size?: number }) => (
   <img
-    src="/cal_center.png"
+    src="cal_center.png"
     alt="Atendente"
     width={size}
     height={size}
@@ -388,7 +388,7 @@ function Navbar() {
       <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
         <a href="#" className="flex items-center group">
           <img
-            src="/logo_vm-1.png"
+            src="logo_vm-1.png"
             alt="VM Andaimes"
             className="navbar-logo"
             style={{ height: 68, width: 'auto', objectFit: 'contain', border: 'none' }}
@@ -769,19 +769,19 @@ function Gallery() {
   const [activeIndex, setActiveIndex] = useState(0)
 
   const galleryUrls = [
-  "/foto1.png",
-  "/foto2.png",
-  "/foto3.png",
-  "/foto4.jpeg",
-  "/foto5.jpeg",
-  "/foto6.jpeg",
-  "/foto7.jpeg",
-  "/foto8.jpeg",
-  "/foto9.jpeg",
-  "/foto10.jpeg",
-  "/foto11.jpeg",
-  "/foto12.jpeg",
-  "/foto13.jpeg"
+  "foto1.png",
+  "foto2.png",
+  "foto3.png",
+  "foto4.jpeg",
+  "foto5.jpeg",
+  "foto6.jpeg",
+  "foto7.jpeg",
+  "foto8.jpeg",
+  "foto9.jpeg",
+  "foto10.jpeg",
+  "foto11.jpeg",
+  "foto12.jpeg",
+  "foto13.jpeg"
 ]  
 const galleryImages = galleryUrls.map((url, index) => ({ url: url as unknown as string, alt: t.imageAlts[index] }))
 
@@ -1530,7 +1530,7 @@ function Footer() {
         <div className="footer-grid grid md:grid-cols-4 gap-8">
           <div className="md:col-span-2">
             <div className="mb-5">
-              <img src="/logo_vm-1.png" alt="VM Andaimes" style={{ height: 72, width: 'auto', objectFit: 'contain' }} />
+              <img src="logo_vm-1.png" alt="VM Andaimes" style={{ height: 72, width: 'auto', objectFit: 'contain' }} />
             </div>
             <p style={{ fontFamily: 'Barlow, sans-serif', fontSize: '0.95rem', color: 'rgba(255,255,255,0.5)', lineHeight: 1.8, maxWidth: 320, marginBottom: '1.5rem' }}>
               {tf.desc}
